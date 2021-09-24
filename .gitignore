@@ -2,4 +2,4 @@
 !/source/petstore.yml
 
 /docs/*
-!/docs/petstore.html
+!/docs/index.html

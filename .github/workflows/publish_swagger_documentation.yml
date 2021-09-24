@@ -19,7 +19,7 @@ jobs:
     - name: Install ReDoc-CLI
       run:  npm install -g redoc-cli
     - name: Generate ReDoc html documentation
-      run: redoc-cli bundle --output docs/petstore.html source/petstore.yml
+      run: redoc-cli bundle --output docs/index.html source/petstore.yml
     - name: Commit documentation changes
       run: |
         if [ -n "$(git status --porcelain)" ]; then
