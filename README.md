@@ -9,4 +9,4 @@ Add your yml file in the source directory
 
 Use the command ```APPLICATION_FILE=your_file make build``` to start the generation
 
-Once the generation is complete the output file will be stored inside the **ouput** directory
+Once the generation is complete the output file will be stored inside the **docs** directory

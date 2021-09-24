@@ -1,5 +1,5 @@
 /source/*
-!/source/.gitkeep
+!/source/petstore.yml
 
-/output/*
-!/output/.gitkeep
+/docs/*
+!/docs/petstore.html

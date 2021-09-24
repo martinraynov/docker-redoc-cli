@@ -15,6 +15,6 @@ ifndef APPLICATION_FILE
 	$(error APPLICATION_FILE is not set !(Use "APPLICATION_FILE=..." before the build command) )
 endif
 	_UID=$(shell id -u) GID=$(shell id -g) docker build --rm --build-arg APPLICATION_FILE=${APPLICATION_FILE} -t "localhost/redoc-cli:latest" -f ./docker/Dockerfile .
-	_UID=$(shell id -u) GID=$(shell id -g) docker run -it -v ${PWD}/output:/srv/output localhost/redoc-cli:latest
+	_UID=$(shell id -u) GID=$(shell id -g) docker run -it -v ${PWD}/docs:/srv/docs localhost/redoc-cli:latest
 
 .DEFAULT_GOAL := help

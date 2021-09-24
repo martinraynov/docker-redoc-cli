@@ -1,0 +1,37 @@
+name: Publish Swagger Documentation
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Setup checkout
+      uses: actions/checkout@v2
+    - name: Setup node
+      uses: actions/setup-node@v1
+      with:
+        node-version: '16'
+    - name: Install ReDoc-CLI
+      run:  npm install -g redoc-cli
+    - name: Generate ReDoc html documentation
+      run: redoc-cli bundle --output docs/index.html documentation/swagger.yml
+    - name: Commit documentation changes
+      run: |
+        if [ -n "$(git status --porcelain)" ]; then
+          git config --global user.email "action@github.com"
+          git config --global user.name "Publish Swagger Documentation"
+          git add -A
+          git commit -m "Add changes" -a
+        else
+          echo "The documentation has not been updated"
+        fi
+    - name: Github Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{secrets.GITHUB_TOKEN}}
+        branch: 'main'
